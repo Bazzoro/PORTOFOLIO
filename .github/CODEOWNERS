@@ -1,0 +1,20 @@
+# Global code owners
+* @Bazzoro
+
+# Documentation
+*.md @Bazzoro
+docs/ @Bazzoro
+
+# Configuration files
+package.json @Bazzoro
+tsconfig.json @Bazzoro
+tailwind.config.js @Bazzoro
+next.config.js @Bazzoro
+
+# Main application files
+app/ @Bazzoro
+components/ @Bazzoro
+lib/ @Bazzoro
+
+# GitHub specific files
+.github/ @Bazzoro

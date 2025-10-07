@@ -1,0 +1,59 @@
+name: Update README
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Run every Sunday at midnight
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build
+        run: npm run build
+      
+      - name: Update README
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Read current README
+            const readmePath = path.join(process.cwd(), 'README.md');
+            let readme = fs.readFileSync(readmePath, 'utf8');
+            
+            // Update last updated date
+            const today = new Date().toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            });
+            
+            readme = readme.replace(
+              /Last Updated: .*/,
+              `Last Updated: ${today}`
+            );
+            
+            // Write updated README
+            fs.writeFileSync(readmePath, readme);
+            
+            // Commit changes
+            const { execSync } = require('child_process');
+            execSync('git config --local user.email "action@github.com"');
+            execSync('git config --local user.name "GitHub Action"');
+            execSync('git add README.md');
+            execSync('git commit -m "Update README last updated date"');
+            execSync('git push');

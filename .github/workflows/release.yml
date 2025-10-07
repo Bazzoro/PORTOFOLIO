@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build
+        run: npm run build
+      
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+          body: |
+            ## What's Changed
+            
+            - 🎨 Updated portfolio design
+            - ⚡ Performance improvements
+            - 🐛 Bug fixes
+            - 📚 Documentation updates
+            
+            ## Full Changelog
+            See [CHANGELOG.md](CHANGELOG.md) for full details.
+            
+            ## Installation
+            ```bash
+            git clone https://github.com/Bazzoro/portfolio-website.git
+            cd portfolio-website
+            npm install
+            npm run dev
+            ```
+            
+            ## Deployment
+            - **Vercel**: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Bazzoro/portfolio-website)
+            - **Netlify**: [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Bazzoro/portfolio-website)
+            
+            **Full Changelog**: https://github.com/Bazzoro/portfolio-website/compare/${{ github.event.before }}...${{ github.ref }}

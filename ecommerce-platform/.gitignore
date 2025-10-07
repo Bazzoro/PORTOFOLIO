@@ -17,6 +17,11 @@ dist/
 .env.test.local
 .env.production.local
 
+# Database
+prisma/migrations/
+*.db
+*.sqlite
+
 # IDE
 .vscode/
 .idea/
