@@ -465,7 +465,7 @@ export default function Portfolio() {
               {/* Right Side - Content */}
               <div className="space-y-8">
                 {/* Greeting */}
-                <p className="text-lg text-gray-300">Hi, I'm Baskoro Rizky Adiputra</p>
+                <p className="text-lg text-gray-300">Hi, I&apos;m Baskoro Rizky Adiputra</p>
                 
                 {/* Main Title */}
                 <div className="space-y-2">
@@ -610,12 +610,12 @@ export default function Portfolio() {
               <div>
                 <h3 className="text-3xl font-bold text-white mb-8">Passionate Developer</h3>
                 <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                  I'm a Computer Science student at BINUS@Malang with a strong passion for full-stack development. 
+                  I&apos;m a Computer Science student at BINUS@Malang with a strong passion for full-stack development. 
                   I enjoy creating innovative solutions that solve real-world problems and make a positive impact.
                 </p>
                 <p className="text-lg text-gray-300 mb-8 leading-relaxed">
                   My journey in programming started with curiosity and has evolved into a deep understanding of 
-                  various technologies and frameworks. I'm always eager to learn new technologies and take on 
+                  various technologies and frameworks. I&apos;m always eager to learn new technologies and take on 
                   challenging projects.
                 </p>
                 <div className="flex flex-wrap gap-6">
