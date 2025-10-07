@@ -8,7 +8,6 @@ import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { Github, Mail, Phone, MapPin, ExternalLink, Code, Database, Globe, Smartphone, FileText, Terminal, Layers, GitBranch, Hash } from 'lucide-react'
 import emailjs from '@emailjs/browser'
-import SplitText from './component/teks nama'
 import Image from 'next/image'
 
 export default function Portfolio() {
